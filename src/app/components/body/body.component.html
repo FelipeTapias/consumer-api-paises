@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+
+            <p>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              ¿Qué tengo que hacer?
+            </button>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    Si quieres saber sobre cualquier país en especifico, solo necesitas saber cual quieres. En la parte de abajo encontraras un formulario con los paises que puedes consultar, al elegir el que desees presiona el botón "Consultar", y al lado izquierdo se te
+                    mostrará la información relacionada al país. <br><br> Nota: Este proyecto esta en base beta. <br>Los Andreses.
+                </div>
+            </div>
+
+            <div style="width: 90%;">
+                <form [formGroup]="form" (submit)="onSubmit()">
+                    <label>Selecciona el pais a consultar</label>
+                    <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon" formControlName="country" name="country">
+                <option selected value=""></option>
+                <option *ngFor="let item of data" value="{{ item.alpha3Code }}">{{ item.name }}</option>
+              </select>
+                    <br>
+                    <br>
+                    <button type="button" class="btn btn-warning" (click)="onSubmit()">Consultar</button>
+                </form>
+            </div>
+        </div>
+        <div class="col">
+            <div *ngIf="show" class="card" style="width: 110%;">
+                <img src="{{ dataCountry.flag }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3 class="card-title">{{ dataCountry.name }}</h3>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>Código:</b> {{ dataCountry.alpha3Code }}</li>
+                    <li class="list-group-item"><b>Capital:</b> {{ dataCountry.capital }}</li>
+                    <li class="list-group-item"><b>Moneda:</b> {{ dataCountry.currencies[0].name }}</li>
+                    <li class="list-group-item"><b>Población:</b> {{ dataCountry.population }}</li>
+                    <li class="list-group-item"><b>Código llamadas:</b> +{{ dataCountry.callingCodes }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
