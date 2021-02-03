@@ -13,6 +13,7 @@ export class BodyComponent implements OnInit {
   data: any;
   dataCountry: any;
   show:boolean = false;
+  dataNumber: any;
 
   constructor(private services: BodyService) { }
 
@@ -22,8 +23,18 @@ export class BodyComponent implements OnInit {
     });
   };
 
+  // dateForever(){
+  //   this.services.getInfoNumber().subscribe(
+  //     res => {
+  //         this.dataNumber = res;
+  //         console.log(`Esta es la API de los numeros: ${this.dataNumber}`);
+  //     }
+  //   );
+  // }
+
   ngOnInit(): void {
     this.initForm();
+    // this.dateForever();
     this.services.getAll().subscribe(
       res => {
         this.data = res;
@@ -42,8 +53,8 @@ export class BodyComponent implements OnInit {
         }
       );
     } else {
-      console.log("Debe llenar los campos");
-      alert('Debe llenar los campos');
+      console.log("Debes de seleccionar un país.");
+      alert('Debes de seleccionar un país.');
     }
   }
 
