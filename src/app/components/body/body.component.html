@@ -1,11 +1,26 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col">
+        <div class="col-sm-12 col-md-12 col-lg-6 pt-5">
 
+
+
+            <div>
+                <form [formGroup]="form" (submit)="onSubmit()">
+                    <label>Selecciona el pais a consultar</label>
+                    <select class="custom-select w-100" id="inputGroupSelect04" aria-label="Example select with button addon" formControlName="country" name="country">
+                <option selected value=""></option>
+                <option *ngFor="let item of data" value="{{ item.alpha3Code }}">{{ item.name }}</option>
+              </select>
+                    <br>
+                    <br>
+                    <button type="button" class="btn btn-warning w-100" (click)="onSubmit()">Consultar</button>
+                </form>
+            </div>
+            <br>
             <p>
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-              ¿Qué tengo que hacer?
-            </button>
+                <button class="btn btn-primary w-100" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            ¿Qué tengo que hacer?
+          </button>
             </p>
             <div class="collapse" id="collapseExample">
                 <div class="card card-body">
@@ -13,22 +28,9 @@
                     mostrará la información relacionada al país. <br><br> Nota: Este proyecto esta en base beta. <br>Los Andreses.
                 </div>
             </div>
-
-            <div style="width: 90%;">
-                <form [formGroup]="form" (submit)="onSubmit()">
-                    <label>Selecciona el pais a consultar</label>
-                    <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon" formControlName="country" name="country">
-                <option selected value=""></option>
-                <option *ngFor="let item of data" value="{{ item.alpha3Code }}">{{ item.name }}</option>
-              </select>
-                    <br>
-                    <br>
-                    <button type="button" class="btn btn-warning" (click)="onSubmit()">Consultar</button>
-                </form>
-            </div>
         </div>
-        <div class="col">
-            <div *ngIf="show" class="card" style="width: 110%;">
+        <div class="col-sm-12 col-md-12 col-lg-6 pt-5">
+            <div *ngIf="show" class="card">
                 <img src="{{ dataCountry.flag }}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h3 class="card-title">{{ dataCountry.name }}</h3>
